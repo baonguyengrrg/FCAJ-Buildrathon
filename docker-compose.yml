@@ -1,0 +1,20 @@
+services:
+  floci:
+    image: floci/floci:latest
+    container_name: floci-core
+    ports:
+      - "4566:4566"
+    volumes:
+      - ./floci_data:/var/lib/floci
+    restart: unless-stopped
+
+  gateway:
+    build: .
+    container_name: floci-gateway
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - floci
+    restart: unless-stopped

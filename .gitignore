@@ -1,0 +1,4 @@
+floci_data/
+data/
+__pycache__/
+*.log
